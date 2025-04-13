@@ -19,7 +19,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
-@Autonomous(name = "5 spec")
+@Autonomous(name = "Aarush Sample 5 spec")
 public class SampleAarushPedro extends OpMode 
 {
 
