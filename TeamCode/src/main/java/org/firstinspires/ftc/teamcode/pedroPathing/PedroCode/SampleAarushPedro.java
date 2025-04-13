@@ -20,7 +20,8 @@ import pedroPathing.constants.FConstants;
 import pedroPathing.constants.LConstants;
 
 @Autonomous(name = "5 spec")
-public class SampleAarushPedro extends OpMode {
+public class SampleAarushPedro extends OpMode 
+{
 
 
     private Follower follower;
@@ -64,7 +65,8 @@ public class SampleAarushPedro extends OpMode {
 
     private PathChain preloadH, preloadS, samp1L, samp1, samp2L, samp2, samp3L, samp3, line, get, hang1, line2, get2, hang2, line3, get3, hang3, line4, get4, hang4, end;
 
-    public void buildPaths() {
+    public void buildPaths() 
+    {
 
         preloadH = follower.pathBuilder()
                 .addPath(
@@ -262,19 +264,23 @@ public class SampleAarushPedro extends OpMode {
                 .build();
     }
 
-    public double outtakePid(double target, double current) {
+    public double outtakePid(double target, double current) 
+    {
         return (target - current) * kP_o;
     }
 
-    public void outtake(int targetPosition) {
+    public void outtake(int targetPosition) 
+    {
         back.setTargetPosition(targetPosition);
         back.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         back.setPower(outtakePid(targetPosition, back.getCurrentPosition()));
     }
 
-    public void autonomousPathUpdate() {
+    public void autonomousPathUpdate() 
+    {
 
-        switch (pathState) {
+        switch (pathState) 
+        {
 
             case 0:
                 follower.setMaxPower(1.0);
@@ -285,7 +291,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 1:
-                if(!follower.isBusy() && back.getCurrentPosition() >= 2625) {
+                if(!follower.isBusy() && back.getCurrentPosition() >= 2625) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(preloadS,true);
                     outtake(0);
@@ -294,7 +301,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 2:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp1L, true);
                     setPathState(3);
@@ -303,7 +311,8 @@ public class SampleAarushPedro extends OpMode {
 
             case 3:
 
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp1,true);
                     setPathState(4);
@@ -312,7 +321,8 @@ public class SampleAarushPedro extends OpMode {
 
             case 4:
 
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp2L,true);
                     setPathState(5);
@@ -321,7 +331,8 @@ public class SampleAarushPedro extends OpMode {
 
             case 5:
 
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp2,true);
                     setPathState(6);
@@ -330,7 +341,8 @@ public class SampleAarushPedro extends OpMode {
 
             case 6:
 
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp3L,true);
                     setPathState(7);
@@ -339,7 +351,8 @@ public class SampleAarushPedro extends OpMode {
 
             case 7:
 
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(samp3,true);
                     setPathState(8);
@@ -347,14 +360,16 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 8:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     follower.followPath(line,true);
                     setPathState(9);
                 }
 
             case 9:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(-0.3);
                     br.setPower(0.3);
@@ -364,7 +379,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 10:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(0);
                     br.setPower(0);
@@ -375,7 +391,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 11:
-                if(!follower.isBusy() && back.getCurrentPosition() >= 2425) {
+                if(!follower.isBusy() && back.getCurrentPosition() >= 2425) 
+                {
                     follower.setMaxPower(1.0);
                     outtake(0);
                     follower.followPath(line2, true);
@@ -384,7 +401,8 @@ public class SampleAarushPedro extends OpMode {
                 }
 
             case 12:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(-0.2);
                     br.setPower(0.2);
@@ -394,7 +412,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 13:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(0);
                     br.setPower(0);
@@ -405,7 +424,8 @@ public class SampleAarushPedro extends OpMode {
                 }
 
             case 14:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy())
+                {
                     follower.setMaxPower(1.0);
                     outtake(0);
                     follower.followPath(line3, true);
@@ -415,7 +435,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 15:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(-0.2);
                     br.setPower(0.2);
@@ -425,7 +446,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 16:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(0);
                     br.setPower(0);
@@ -436,17 +458,18 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 17:
-                if(!follower.isBusy() && back.getCurrentPosition() >= 2400) {
+                if(!follower.isBusy() && back.getCurrentPosition() >= 2400) 
+                {
                     follower.setMaxPower(1.0);
                     outtake(0);
                     follower.followPath(line4, true);
                     setPathState(18);
                 }
-
                 break;
 
             case 18:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(-0.25);
                     br.setPower(0.25);
@@ -456,7 +479,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 19:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     bl.setPower(0);
                     br.setPower(0);
@@ -467,7 +491,8 @@ public class SampleAarushPedro extends OpMode {
                 break;
 
             case 20:
-                if(!follower.isBusy()) {
+                if(!follower.isBusy()) 
+                {
                     follower.setMaxPower(1.0);
                     outtake(0);
                     follower.followPath(end,true);
@@ -478,13 +503,15 @@ public class SampleAarushPedro extends OpMode {
         }
     }
 
-    public void setPathState(int pState) {
+    public void setPathState(int pState) 
+    {
         pathState = pState;
         pathTimer.resetTimer();
     }
 
     @Override
-    public void loop() {
+    public void loop() 
+    {
 
         follower.update();
         autonomousPathUpdate();
@@ -499,7 +526,8 @@ public class SampleAarushPedro extends OpMode {
     }
 
     @Override
-    public void init() {
+    public void init() 
+    {
         pathTimer = new Timer();
         opmodeTimer = new Timer();
         opmodeTimer.resetTimer();
@@ -524,18 +552,21 @@ public class SampleAarushPedro extends OpMode {
 
 
     @Override
-    public void init_loop() {
+    public void init_loop() 
+    {
 
     }
 
     @Override
-    public void start() {
+    public void start() 
+    {
         opmodeTimer.resetTimer();
         setPathState(0);
     }
 
     @Override
-    public void stop() {
+    public void stop() 
+    {
         AutoEndPose = follower.getPose();
     }
 }
